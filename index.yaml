@@ -1,0 +1,17 @@
+apiVersion: v1
+entries:
+  nginx-test:
+    - version: 0.1.0
+      name: nginx-test
+      description: Minimal nginx chart
+      urls:
+        - charts/nginx-test-0.1.0.tgz
+
+  redis-test:
+    - version: 0.1.0
+      name: redis-test
+      description: Minimal redis chart
+      urls:
+        - charts/redis-test-0.1.0.tgz
+
+generated: "2026-01-01T00:00:00Z"
