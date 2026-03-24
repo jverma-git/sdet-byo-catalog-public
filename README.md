@@ -4,6 +4,7 @@ This repository contains minimal Helm charts used for automated
 testing of BYO Catalog functionality.
 
 Charts:
+- busybox
 - nginx-test
 - redis-test
 
