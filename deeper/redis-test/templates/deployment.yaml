@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis-test
+  name: {{ .Values.fullnameOverride | default .Release.Name }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: redis-test
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: redis-test
+        app: {{ .Release.Name }}
     spec:
       containers:
       - name: redis
-        image: redis:{{ .Chart.AppVersion }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
         - containerPort: 6379
