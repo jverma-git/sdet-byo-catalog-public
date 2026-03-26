@@ -1,17 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-test
+  name: {{ .Values.fullnameOverride | default .Release.Name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount | default 1 }}
   selector:
     matchLabels:
-      app: nginx-test
+      app: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: nginx-test
+        app: {{ .Release.Name }}
     spec:
       containers:
       - name: nginx
-        image: nginx:latest
+        image: "{{ .Values.image.repository | default \"nginx\" }}:{{ .Values.image.tag | default \"latest\" }}"
+        ports:
+        - containerPort: 80
